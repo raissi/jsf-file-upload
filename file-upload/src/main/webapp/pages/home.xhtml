@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<f:view encoding="utf-8">      
+	<h:head>
+		<title>File upload sample</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</h:head>
+	<h:body>
+
+		<h:outputText value="PrimeFaces File upload sample"
+			style="font:30px bold; margin-left:15%;" />
+		<h:form enctype="multipart/form-data">
+			<p:fileUpload
+				fileUploadListener="#{fileManagedBean.handleFileUpload}"
+				mode="advanced" update="messages" label="Choose a file"
+				sizeLimit="104857600"
+				invalidSizeMessage="The maximum file size allowed is 100 Megabytes !" />
+			
+			<p:fileUpload
+				fileUploadListener="#{fileManagedBean.utf8HandleFileUpload}"
+				mode="advanced" update="messages" label="Choose a file for UTF8 upload"
+				sizeLimit="104857600"
+				invalidSizeMessage="The maximum file size allowed is 100 Megabytes !" />
+				
+			<p:growl id="messages" showDetail="true" sticky="true" />
+		</h:form>
+
+	</h:body>
+	
+</f:view>
+</html>
